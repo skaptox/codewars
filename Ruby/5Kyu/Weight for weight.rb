@@ -20,14 +20,13 @@ since, having the same "weight" (9) it comes before as a string.
 
 All numbers in the list are positive numbers and the list can be empty. 
 
-=end
 
 def order_weight(strng)
-	weights = strng.split(" ") #Convert string to array 
-	digitsSum = weights.map{|x| x.chars.map(&:to_i).reduce(:+)} #Add the digits of each member
+	weights = strng.split(" ") 
+	digitsSum = weights.map{|x| x.chars.map(&:to_i).reduce(:+)} 
 	indices = (0...weights.size()).to_a
-	aHash = indices.zip(digitsSum).to_h #Make a hash with two arrays
-	aHash = aHash.sort_by{|k,v| v}.to_h #Sort the hash by digit sum
+	aHash = indices.zip(digitsSum).to_h 
+	aHash = aHash.sort_by{|k,v| v}.to_h 
 
 	keys,values = aHash.keys, aHash.values 
 
@@ -36,18 +35,28 @@ def order_weight(strng)
 	i = 0
 	while i < max
 		pack = []
-		pack << weights[keys[i]] #The keys represent the order fake of the weights
+		pack << weights[keys[i]] 
 		while i + 1 < max and values[i] == values[i + 1]
-			pack << weights[keys[i+1]] #Accumulate weights with equal valor
+			pack << weights[keys[i+1]] 
 			i += 1
 		end
-		pack = pack.sort #Sort equal weights by string
+		pack = pack.sort 
 		result += pack
 		i += 1
 	end
 	result.join(" ")
 end
 
+=end
+
+#Update : I didn't know to use two parameter in sort_by method
+
+def order_weight(strng)
+	return strng.split().sort_by {|e| [e.chars.map(&:to_i).reduce(:+),e]}.join(" ")
+end
+
+
+puts order_weight("71899703 200 6 91 425 4 67407 7 96488 6 4 2 7 31064 9 7920 1 34608557 27 72 18 81")
 
 puts order_weight("71899703 200 6 91 425 4 67407 7 96488 6 4 2 7 31064 9 7920 1 34608557 27 72 18 81") == 
 "1 2 200 4 4 6 6 7 7 18 27 72 81 9 91 425 31064 7920 67407 96488 34608557 71899703" #true
