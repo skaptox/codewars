@@ -17,12 +17,14 @@ list_squared(42, 250) --> [[42, 2500], [246, 84100]]
 
 =end
 
-def list_squared(m, n)
-	result = []
-  	(m..n).each{ |i|
-  		if Math.sqrt(r = (1..i).select{|e| i % e == 0}.map{|e| e*e}.reduce(:+)) % 1 == 0 
-  			result << [i,r]
-  		end
-  	}
-  	result
+def factors(n)
+	(1..Math.sqrt(n)).select{|val|( n % val).zero? }.inject([]){|mem,i| i*i == n ? mem+[i] : mem+[n/i,i]}.sort
 end
+
+def list_squared(m, n)
+	(m..n).inject([]){|mem,i| (Math.sqrt(r = factors(i).map{|e| e*e}.reduce(:+))%1).zero? ? mem << [i,r] : mem}
+end
+
+
+
+print list_squared(42, 250) 
