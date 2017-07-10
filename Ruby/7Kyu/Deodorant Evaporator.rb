@@ -1,3 +1,16 @@
+
+
+def evaporator(content, evap_per_day, threshold)
+  days = 0
+  pct = evap_per_day / 100.0
+  umbral = content * threshold  / 100.0
+  while content > umbral do
+    content = content - pct * content
+    days += 1
+  end
+  days
+end
+
 =begin
 This program tests the life of an evaporator containing a gas.
 
@@ -15,15 +28,3 @@ prefer to reason with content, some other with percentages only. It's up to you
 but you must keep it as a parameter because the tests have it as an argument.
 
 =end
-
-def evaporator(content, evap_per_day, threshold)
-  days = 0
-  pct = evap_per_day / 100.0
-  umbral = content * threshold  / 100.0
-  while content > umbral do
-    content = content - pct * content
-    days += 1
-  end
-  days
-end
-

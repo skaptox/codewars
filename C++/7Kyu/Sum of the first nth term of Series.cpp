@@ -1,3 +1,19 @@
+#include <iomanip>
+
+std::string seriesSum(int n)
+{
+    float num = 0,divider = 1;
+    for (int i = 0; i < n; ++i)
+    {
+      num += (1.0/divider);
+      divider  += 3;
+    }
+    
+    std::ostringstream ss;
+    ss << std::fixed << std::setprecision(2) << num;
+    return ss.str();
+}
+
 /**
 
 ###Task:
@@ -23,22 +39,5 @@ SeriesSum(5) => 1 + 1/4 + 1/7 + 1/10 + 1/13 = "1.57"
 NOTE: In PHP the function is called series_sum().
 
 **/
-
-#include <iomanip>
-
-std::string seriesSum(int n)
-{
-    float num = 0,divider = 1;
-    for (int i = 0; i < n; ++i)
-    {
-      num += (1.0/divider);
-      divider  += 3;
-    }
-    
-    std::ostringstream ss;
-    ss << std::fixed << std::setprecision(2) << num;
-    return ss.str();
-}
-
 
 

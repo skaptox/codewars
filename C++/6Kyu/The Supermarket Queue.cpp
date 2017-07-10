@@ -1,3 +1,18 @@
+#include <algorithm>
+
+long queueTime(std::vector<int> customers,int n)
+{
+  std::vector <long> time (n,0);
+  int checkoutTills = 0;
+  
+  for (int i = 0; i < customers.size() ; i++)
+  {
+    checkoutTills = distance(begin(time), min_element(begin(time), end(time)));
+    time[checkoutTills] += customers[i];
+  }
+  return *max_element(begin(time),end(time));
+}
+
 /*There is a queue for the self-checkout tills at the supermarket. Your task is write a function to calculate the total time required for all the customers to check out!
 
 The function has two input variables:
@@ -32,18 +47,3 @@ N.B. You should assume that all the test input will be valid, as specified above
 
 P.S. The situation in this kata can be likened to the more-computer-science-related idea of a thread pool, with relation to running multiple processes at the same time: https://en.wikipedia.org/wiki/Thread_pool
 */
-
-#include <algorithm>
-
-long queueTime(std::vector<int> customers,int n)
-{
-  std::vector <long> time (n,0);
-  int checkoutTills = 0;
-  
-  for (int i = 0; i < customers.size() ; i++)
-  {
-    checkoutTills = distance(begin(time), min_element(begin(time), end(time)));
-    time[checkoutTills] += customers[i];
-  }
-  return *max_element(begin(time),end(time));
-}

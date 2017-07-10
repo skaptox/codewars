@@ -1,3 +1,26 @@
+class ToSmallest
+{
+public:
+  static std::vector<long long> smallest(long long n);
+};
+
+std::vector<long long> ToSmallest::smallest(long long n)
+{
+  std::string str = std::to_string(n);
+  std::vector<std::vector<long long>> vec = { { n, 0, 0 } };
+  for (int i = 0; i < str.length(); i++ )
+  {
+    for (int j = 0; j < str.length(); j++)
+    {
+      std::string tmpStr = str;
+      tmpStr.erase(begin(tmpStr) + i);
+      tmpStr.insert(j, 1, str[i]);
+      vec.push_back({ std::stoll(tmpStr), i, j});
+    }
+  }
+  return *(std::min_element(vec.begin(), vec.end()));
+}
+
 /*
 You have a positive number n consisting of digits. You can do at most one operation: Choosing the index of a digit in the number, remove this digit at that index and insert it back to another place in the number.
 
@@ -24,26 +47,3 @@ index `i` in [29917, 0, 1].
 
 smallest(1000000) --> [1, 0, 6]
 */
-
-class ToSmallest
-{
-public:
-  static std::vector<long long> smallest(long long n);
-};
-
-std::vector<long long> ToSmallest::smallest(long long n)
-{
-  std::string str = std::to_string(n);
-  std::vector<std::vector<long long>> vec = { { n, 0, 0 } };
-  for (int i = 0; i < str.length(); i++ )
-  {
-    for (int j = 0; j < str.length(); j++)
-    {
-      std::string tmpStr = str;
-      tmpStr.erase(begin(tmpStr) + i);
-      tmpStr.insert(j, 1, str[i]);
-      vec.push_back({ std::stoll(tmpStr), i, j});
-    }
-  }
-  return *(std::min_element(vec.begin(), vec.end()));
-}

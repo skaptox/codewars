@@ -1,3 +1,21 @@
+def bouncingBall(h, bounce, window)
+    if (h > 0 and bounce > 0 and bounce < 1 and window < h)
+    	height = h*bounce
+    	times = 1;
+    	while (height > window)
+    		times += 2
+    		h = height
+    		height = h*bounce
+    	end
+    	return times
+    end 
+    return -1;        
+end
+
+
+puts bouncingBall(3, 0.66, 1.5) #3
+puts bouncingBall(30, 0.66, 1.5) #15
+
 =begin
 
 A child plays with a ball on the nth floor of a big building. The height of this floor is known:
@@ -29,21 +47,3 @@ Example:
     h = 3, bounce = 1, window = 1.5, result is -1
 
 =end
-
-def bouncingBall(h, bounce, window)
-    if (h > 0 and bounce > 0 and bounce < 1 and window < h)
-    	height = h*bounce
-    	times = 1;
-    	while (height > window)
-    		times += 2
-    		h = height
-    		height = h*bounce
-    	end
-    	return times
-    end 
-    return -1;        
-end
-
-
-puts bouncingBall(3, 0.66, 1.5) #3
-puts bouncingBall(30, 0.66, 1.5) #15

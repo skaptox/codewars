@@ -1,3 +1,22 @@
+#include <math.h>
+
+using namespace std;
+
+class Same {
+    public: static bool comp(std::vector<int>, std::vector<int>);
+};
+
+bool Same::comp(std::vector<int> a, std::vector<int> b)
+{
+  for (auto & item : a)
+    item = pow(item,2);
+    
+  std::sort(a.begin(),a.end());
+  std::sort(b.begin(),b.end());
+  return a == b;
+
+}
+
 /*Given two arrays a and b write a function comp(a, b) (compSame(a, b) in Clojure) that checks whether the two arrays have the "same" elements, with the same multiplicities. "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
 Examples
 Valid arrays
@@ -31,22 +50,3 @@ If a or b are nil (or null or None), the problem doesn't make sense so return fa
 
 If a or b are empty the result is evident by itself.*/
 
-#include <math.h>
-
-using namespace std;
-
-class Same {
-    public: static bool comp(std::vector<int>, std::vector<int>);
-};
-
-bool Same::comp(std::vector<int> a, std::vector<int> b)
-{
-  for (auto & item : a)
-    item = pow(item,2);
-    
-  std::sort(a.begin(),a.end());
-  std::sort(b.begin(),b.end());
-  
-  return a == b;
-
-}

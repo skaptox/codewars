@@ -1,3 +1,13 @@
+def narcissistic?( value )
+  num = value.to_s
+  sum = 0;
+  num.each_char{|x| sum += x.to_i**num.length}
+  return sum == value;
+end
+
+puts narcissistic?(153) #True
+puts narcissistic?(152) #False
+
 =begin
 
 A Narcissistic Number is a number which is the sum of its own digits, each raised to the power of the number of digits.
@@ -17,13 +27,3 @@ Your code must return true or false depending upon whether the given number is a
 Error checking for text strings or other invalid inputs is not required, only valid integers will be passed into the function.
 
 =end
-
-def narcissistic?( value )
-  num = value.to_s
-  sum = 0;
-  num.each_char{|x| sum += x.to_i**num.length}
-  return sum == value;
-end
-
-puts narcissistic?(153) #True
-puts narcissistic?(152) #False

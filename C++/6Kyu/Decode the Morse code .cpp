@@ -1,3 +1,40 @@
+
+using namespace std;
+
+std::string decodeMorse(std::string morseCode) {
+    
+    auto beg = morseCode.find_first_not_of(' ');
+    auto end = morseCode.find_last_not_of(' ') + 1 ;
+   
+    morseCode = morseCode.substr(beg, end - beg); //Delete leading and trailing spaces
+    
+    size_t index;
+    
+    while ((index = morseCode.find("   ")) != string::npos)
+      morseCode.replace(index,3,"$"); //Replace three spaces by a $
+      
+    string decoded,letter;
+   
+    for (auto item : morseCode)
+    {
+      if (item != ' ' and item !='$')
+        letter += item;
+      else
+      {
+        decoded += MORSE_CODE[letter];
+        letter.clear();
+          
+        if (item == '$') 
+          decoded+= ' ';
+      }   
+    }
+    
+    if (not letter.empty()) 
+      decoded += MORSE_CODE[letter];
+      
+    return decoded;
+}
+
 /*
 
 In this kata you have to write a simple Morse code decoder. While the Morse code is now mostly
@@ -36,40 +73,4 @@ mind. This is mostly because otherwise the engine would simply ignore the tests,
 "valid" solution.
 
 */
-
-using namespace std;
-
-std::string decodeMorse(std::string morseCode) {
-    
-    auto beg = morseCode.find_first_not_of(' ');
-    auto end = morseCode.find_last_not_of(' ') + 1 ;
-   
-    morseCode = morseCode.substr(beg, end - beg); //Delete leading and trailing spaces
-    
-    size_t index;
-    
-    while ((index = morseCode.find("   ")) != string::npos)
-      morseCode.replace(index,3,"$"); //Replace three spaces by a $
-      
-    string decoded,letter;
-   
-    for (auto item : morseCode)
-    {
-      if (item != ' ' and item !='$')
-        letter += item;
-      else
-      {
-        decoded += MORSE_CODE[letter];
-        letter.clear();
-          
-        if (item == '$') 
-          decoded+= ' ';
-      }   
-    }
-    
-    if (not letter.empty()) 
-      decoded += MORSE_CODE[letter];
-      
-    return decoded;
-}
 

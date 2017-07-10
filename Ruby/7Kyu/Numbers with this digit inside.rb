@@ -1,3 +1,17 @@
+def numbers_with_digit_inside(x, d)
+  ary = [0,0,1]
+  (1..x).each {|n| 
+    a = n.to_s.chars.map(&:to_i)
+    if (a.include?(d))
+      ary[0] += 1
+      ary[1] += n
+      ary[2] *= n
+    end
+  }
+  ary[2] = 0 if ary[0] == 0
+  return ary
+end
+
 =begin
 You have to search all numbers from inclusive 1 to inclusive a given number x, that have the given digit d in it.
 The value of d will always be 0 - 9.
@@ -24,17 +38,3 @@ Have fun coding it and please don't forget to vote and rank this kata! :-)
 
 I have created other katas. Have a look if you like coding and challenges.
 =end
-
-def numbers_with_digit_inside(x, d)
-  ary = [0,0,1]
-  (1..x).each {|n| 
-    a = n.to_s.chars.map(&:to_i)
-    if (a.include?(d))
-      ary[0] += 1
-      ary[1] += n
-      ary[2] *= n
-    end
-  }
-  ary[2] = 0 if ary[0] == 0
-  return ary
-end
