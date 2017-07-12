@@ -1,13 +1,13 @@
 def next_bigger(n):
-	st = list(str(n)) 
-	for i in xrange(len(st)-1,0,-1):
-		if st[i] > st[i-1]:
-			st[i:] = sorted(st[i:])
-			j = i + (next(x[0] for x in enumerate(st[i:]) if x[1] > st[i-1]))
-			st[i-1],st[j] = st[j],st[i-1]
-			st[i:] = sorted(st[i:])
-			return int("".join(st))
-	return -1
+    st = list(str(n)) 
+    for i in xrange(len(st)-1,0,-1):
+        if st[i] > st[i-1]:
+            st[i:] = sorted(st[i:])
+            j = i + (next(x[0] for x in enumerate(st[i:]) if x[1] > st[i-1]))
+            st[i-1],st[j] = st[j],st[i-1]
+            st[i:] = sorted(st[i:])
+            return int("".join(st))
+    return -1
 
 
 
