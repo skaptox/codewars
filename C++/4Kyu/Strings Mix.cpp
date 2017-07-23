@@ -64,7 +64,7 @@ std::string Mix::mix (const std::string &s1, const std::string &s2)
    int greater;
    std::string prefix;
 
-   /*Adding element selecte to new vector*/
+   /*Adding element selected to new vector*/
 
    for (int i = 0; i < v1.size(); ++i)
    { 
