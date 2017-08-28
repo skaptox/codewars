@@ -37,7 +37,7 @@ puts (fib(-1000000))
 #The solution exploits the fact that to calculate both F(2N) and F(2N-1) you only need to know F(N) and F(N-1). 
 
 
-#Best solution on Codewars
+#Best solution in Codewars
 
 =begin
 
