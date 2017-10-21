@@ -23,34 +23,33 @@ def snail(array):
    for k in range(len(array)**2):
       sol.append (array[i][j])
       if move == 'right':
-         j+=1
+         j += 1
          if j == right:
             move = 'down'
-            top+=1 
+            top += 1
          continue
       if move == 'down':
-         i+=1
+         i += 1
          if i == bottom:
             move = 'left'
             right-=1
          continue
       if move == 'left':
-         j-=1
+         j -= 1
          if j == left:
             move = 'up'
             bottom-=1
          continue
       if move == 'up':
-         i-=1
+         i -= 1
          if i == top:
             move = 'right'
-            left+=1
+            left += 1
    return sol
 
-print (snail([[1, 2, 3, 4, 5], 
-             [6, 7, 8, 9, 10], 
-             [11, 12, 13, 14, 15], 
-             [16, 17, 18, 19, 20], 
-             [21, 22, 23, 24, 25]]) == 
+print (snail([[1, 2, 3, 4, 5],
+             [6, 7, 8, 9, 10],
+             [11, 12, 13, 14, 15],
+             [16, 17, 18, 19, 20],
+             [21, 22, 23, 24, 25]]) ==
    [1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13])
-    
